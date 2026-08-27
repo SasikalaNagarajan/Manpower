@@ -399,7 +399,7 @@ function jobCard(job) {
         ${job.salary ? `💰 ${esc(job.salary)}<br>` : ""}
         ${job.openings ? `👥 ${esc(job.openings)} opening${String(job.openings) === "1" ? "" : "s"}<br>` : ""}
         ${job.experience ? `💼 ${esc(job.experience)} years<br>` : ""}
-        $(job.education ? `${esc(job.education)}<br>` : ""}
+        ${job.education ? `💼 ${esc(job.education)}<br>` : ""}
         ${job.shift ? `🕒 ${esc(job.shift)}<br>` : ""}
         ${job.closing_date ? `📅 Last date to Apply: ${esc(job.closing_date)}` : ""}
       </div>
