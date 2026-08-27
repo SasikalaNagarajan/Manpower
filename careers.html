@@ -1,88 +1,159 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Careers | HD Facilities</title>
 <style>
-:root{--g:#08783f;--d:#063d25;--l:#effaf4;--t:#173328;--muted:#60776c;--line:#dfeae4}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f7faf8;color:var(--t)}
-a{text-decoration:none}.top{background:var(--d);color:white;text-align:right;padding:9px 6%;font-size:13px}
-.nav{background:#fff;position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:16px 6%;box-shadow:0 2px 14px #0001}
-.brand{font-size:25px;font-weight:800;color:var(--g)}.links{display:flex;gap:25px;font-weight:700}.links a{color:var(--t)}.links a:hover{color:var(--g)}
-.hero{background:linear-gradient(120deg,var(--l),#fff);padding:55px 6% 45px}.wrap{max-width:1250px;margin:auto;padding:0 6%}
-.hero h1{font-size:45px;margin:5px 0}.hero p{color:var(--muted)}
-.main{padding-top:35px;padding-bottom:60px}.tools{background:#fff;padding:18px;border:1px solid var(--line);border-radius:15px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;box-shadow:0 7px 22px #00000009}
-.tools input,.tools select{padding:13px;border:1px solid #ccdcd3;border-radius:9px;font-size:15px;background:white}
-.count{margin:25px 0 15px;font-weight:800}.jobs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+:root{
+  --green:#08783f;
+  --dark:#063d25;
+  --light:#effaf4;
+  --text:#173328;
+  --muted:#60776c;
+  --line:#dfeae4;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f7faf8;color:var(--text)}
+a{text-decoration:none}
+.top{background:var(--dark);color:#fff;text-align:right;padding:9px 6%;font-size:13px}
+.nav{background:#fff;position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:16px 6%;box-shadow:0 2px 14px #0001}
+.brand{font-size:25px;font-weight:800;color:var(--green)}
+.links{display:flex;gap:25px;font-weight:700}
+.links a{color:var(--text)}
+.links a:hover{color:var(--green)}
+.hero{background:linear-gradient(120deg,var(--light),#fff);padding:55px 6% 45px}
+.wrap{max-width:1250px;margin:auto}
+.hero h1{font-size:45px;margin:5px 0}
+.hero p{color:var(--muted)}
+.main{padding:35px 6% 60px}
+.tools{background:#fff;padding:18px;border:1px solid var(--line);border-radius:15px;display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:12px;box-shadow:0 7px 22px #00000009}
+.tools input,.tools select{padding:13px;border:1px solid #ccdcd3;border-radius:9px;font-size:15px;background:#fff}
+.refresh{padding:13px 16px;border:1px solid var(--green);background:#fff;color:var(--green);border-radius:9px;font-weight:800;cursor:pointer}
+.refresh:hover{background:var(--light)}
+.info{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;margin:20px 0 15px}
+.count{font-weight:800}
+.updated{font-size:13px;color:var(--muted)}
+.jobs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .job{background:#fff;border:1px solid var(--line);border-radius:16px;padding:23px;box-shadow:0 8px 25px #00000009}
-.job h2{margin:0 0 8px;font-size:23px;color:var(--d)}.tag{display:inline-block;background:var(--l);color:var(--g);padding:5px 9px;border-radius:20px;font-size:12px;font-weight:700;margin:3px}
-.meta{color:#587066;margin:12px 0;line-height:1.8}.apply{border:0;background:var(--g);color:#fff;padding:12px 18px;border-radius:8px;font-weight:800;cursor:pointer}
+.job h2{margin:0 0 8px;font-size:23px;color:var(--dark)}
+.tag{display:inline-block;background:var(--light);color:var(--green);padding:5px 9px;border-radius:20px;font-size:12px;font-weight:700;margin:3px}
+.meta{color:#587066;margin:12px 0;line-height:1.8}
+.apply{border:0;background:var(--green);color:#fff;padding:12px 18px;border-radius:8px;font-weight:800;cursor:pointer}
+.apply:hover{opacity:.9}
 .empty{background:#fff;border-radius:14px;padding:40px;text-align:center;grid-column:1/-1}
-.modal{display:none;position:fixed;inset:0;background:#0008;z-index:50;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}
+.debug{display:none;margin-top:12px;background:#fff0f0;color:#8d1d1d;padding:12px;border-radius:9px;font-size:13px;white-space:pre-wrap}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:50;align-items:center;justify-content:center;padding:20px}
+.modal.show{display:flex}
 .box{background:#fff;width:min(720px,100%);max-height:92vh;overflow:auto;border-radius:18px;padding:28px;position:relative}
 .close{position:absolute;right:18px;top:12px;border:0;background:none;font-size:27px;cursor:pointer}
-.jobsummary{background:var(--l);padding:14px;border-radius:10px;margin-bottom:16px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.formgrid .full{grid-column:1/-1}.formgrid input,.formgrid textarea{width:100%;padding:12px;border:1px solid #ccdcd3;border-radius:8px;font:inherit}
-.submit{width:100%;padding:14px;background:var(--g);color:#fff;border:0;border-radius:9px;font-weight:800;font-size:16px;cursor:pointer}
-.submit:disabled{opacity:.6;cursor:not-allowed}.statusmsg{padding:12px;border-radius:9px;margin-top:12px;display:none}.ok{display:block;background:#e9f8ef;color:#116b3c}.err{display:block;background:#fff0f0;color:#a32121}
+.jobsummary{background:var(--light);padding:14px;border-radius:10px;margin-bottom:16px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.formgrid .full{grid-column:1/-1}
+.formgrid input,.formgrid textarea{width:100%;padding:12px;border:1px solid #ccdcd3;border-radius:8px;font:inherit}
+.submit{width:100%;padding:14px;background:var(--green);color:#fff;border:0;border-radius:9px;font-weight:800;font-size:16px;cursor:pointer}
+.submit:disabled{opacity:.6;cursor:not-allowed}
+.statusmsg{padding:12px;border-radius:9px;margin-top:12px;display:none}
+.ok{display:block;background:#e9f8ef;color:#116b3c}
+.err{display:block;background:#fff0f0;color:#a32121}
 .note{background:#fff9e6;border:1px solid #f0d88b;padding:12px;border-radius:10px;font-size:13px;margin-bottom:15px}
-@media(max-width:800px){.links{display:none}.tools,.jobs,.formgrid{grid-template-columns:1fr}.hero h1{font-size:35px}.wrap{padding:0 6%}}
+@media(max-width:900px){
+  .links{display:none}
+  .tools,.jobs,.formgrid{grid-template-columns:1fr}
+  .hero h1{font-size:35px}
+  .wrap{padding:0}
+}
 </style>
 </head>
 <body>
-<div class="top">HD Facilities Careers</div>
-<nav class="nav"><a class="brand" href="index.html">HD Facilities</a><div class="links">
-<a href="index.html">Home</a><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="careers.html">Careers</a><a href="index.html#contact">Contact</a>
-</div></nav>
 
-<header class="hero"><div class="wrap"><div style="color:var(--g);font-weight:800;text-transform:uppercase;letter-spacing:2px">Join our workforce</div>
-<h1>Current Job Openings</h1><p>Search current opportunities and apply directly to HD Facilities.</p></div></header>
+<div class="top">HD Facilities Careers</div>
+
+<nav class="nav">
+  <a class="brand" href="index.html">HD Facilities</a>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="careers.html">Careers</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div style="color:var(--green);font-weight:800;text-transform:uppercase;letter-spacing:2px">
+      Join our workforce
+    </div>
+    <h1>Current Job Openings</h1>
+    <p>Search current opportunities and apply directly to HD Facilities.</p>
+  </div>
+</header>
 
 <main class="wrap main">
-<div class="note"><b>Live vacancies:</b> Openings are loaded from the HD Facilities Jobs Google Sheet. Closed or expired jobs are automatically hidden.</div>
-<div class="tools">
-<input id="q" placeholder="Search job title, client or keyword">
-<select id="location"><option value="">All locations</option></select>
-<select id="type"><option value="">All job types</option></select>
-</div>
-<div class="count" id="count">Loading openings...</div>
-<div class="jobs" id="jobs"></div>
+
+  <div class="note">
+    <b>Live vacancies:</b>
+    Jobs are loaded directly from the HD Facilities Google Sheet.
+    Jobs marked <b>Active</b> are shown. Jobs with a past closing date are automatically hidden.
+  </div>
+
+  <div class="tools">
+    <input id="q" placeholder="Search job title, client or keyword">
+    <select id="location"><option value="">All locations</option></select>
+    <select id="type"><option value="">All job types</option></select>
+    <button class="refresh" id="refreshBtn">↻ Refresh Jobs</button>
+  </div>
+
+  <div class="info">
+    <div class="count" id="count">Connecting to Jobs Sheet...</div>
+    <div class="updated" id="updated"></div>
+  </div>
+
+  <div class="jobs" id="jobs"></div>
+  <div class="debug" id="debug"></div>
+
 </main>
 
 <div class="modal" id="modal">
-<div class="box">
-<button class="close" onclick="closeApply()">×</button>
-<h2>Apply for this job</h2>
-<div class="jobsummary" id="selectedJob"></div>
+  <div class="box">
+    <button class="close" onclick="closeApply()">×</button>
 
-<form id="applyForm" class="formgrid">
-<input type="hidden" name="job_id">
-<input type="hidden" name="job_title">
-<input type="hidden" name="job_location">
+    <h2>Apply for this job</h2>
+    <div class="jobsummary" id="selectedJob"></div>
 
-<input required name="name" placeholder="Full Name *">
-<input required name="phone" placeholder="Mobile Number *" type="tel">
+    <form id="applyForm" class="formgrid">
+      <input type="hidden" name="job_id">
+      <input type="hidden" name="job_title">
+      <input type="hidden" name="job_location">
 
-<input required name="email" placeholder="Email *" type="email">
-<input name="age" placeholder="Age" type="number" min="16" max="80">
+      <input required name="name" placeholder="Full Name *">
+      <input required name="phone" placeholder="Mobile Number *" type="tel">
 
-<input name="qualification" placeholder="Highest Qualification">
-<input name="experience" placeholder="Experience">
+      <input required name="email" placeholder="Email *" type="email">
+      <input name="age" placeholder="Age" type="number" min="16" max="80">
 
-<input name="current_location" placeholder="Current Location">
-<input name="resume_url" placeholder="Resume link (Google Drive/URL)">
+      <input name="qualification" placeholder="Highest Qualification">
+      <input name="experience" placeholder="Experience">
 
-<textarea class="full" name="message" rows="4" placeholder="Additional details"></textarea>
+      <input name="current_location" placeholder="Current Location">
+      <input name="resume_url" placeholder="Resume link (Google Drive/URL)">
 
-<div class="full">
-<label><input required type="checkbox"> I confirm that the information provided is correct.</label>
-</div>
+      <textarea class="full" name="message" rows="4" placeholder="Additional details"></textarea>
 
-<button class="submit full" type="submit">Submit Application</button>
-</form>
-<div id="result" class="statusmsg"></div>
-</div>
+      <div class="full">
+        <label>
+          <input required type="checkbox">
+          I confirm that the information provided is correct.
+        </label>
+      </div>
+
+      <button class="submit full" type="submit">Submit Application</button>
+    </form>
+
+    <div id="result" class="statusmsg"></div>
+  </div>
 </div>
 
 <script>
@@ -91,246 +162,353 @@ const APPLICATION_ENDPOINT = "https://script.google.com/macros/s/AKfycbwr_5D68lG
 
 let jobs = [];
 
-function csvParse(text) {
-    const rows = [];
-    let row = [], cell = "", quote = false;
-
-    for (let i = 0; i < text.length; i++) {
-        const c = text[i], n = text[i + 1];
-
-        if (c === '"') {
-            if (quote && n === '"') {
-                cell += '"';
-                i++;
-            } else {
-                quote = !quote;
-            }
-        } else if (c === ',' && !quote) {
-            row.push(cell);
-            cell = "";
-        } else if ((c === '\n' || c === '\r') && !quote) {
-            if (c === '\r' && n === '\n') i++;
-            row.push(cell);
-            if (row.some(x => x.trim())) rows.push(row);
-            row = [];
-            cell = "";
-        } else {
-            cell += c;
-        }
-    }
-
-    if (cell || row.length) {
-        row.push(cell);
-        rows.push(row);
-    }
-
-    if (!rows.length) return [];
-
-    const headers = rows[0].map(x => x.trim().toLowerCase());
-
-    return rows.slice(1).map(r =>
-        Object.fromEntries(headers.map((h, i) => [h, (r[i] || "").trim()]))
-    );
+function $(id) {
+  return document.getElementById(id);
 }
 
-function parseDate(value) {
-    if (!value) return null;
+/* CSV parser that supports commas and quoted descriptions. */
+function csvParse(text) {
+  const rows = [];
+  let row = [];
+  let cell = "";
+  let quote = false;
 
-    const m = value.match(/^(\d{1,2})[-\/]([A-Za-z]{3,9}|\d{1,2})[-\/](\d{4})$/);
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    const n = text[i + 1];
 
-    if (!m) return new Date(value);
-
-    if (/^\d+$/.test(m[2])) {
-        return new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]), 23, 59, 59);
+    if (c === '"') {
+      if (quote && n === '"') {
+        cell += '"';
+        i++;
+      } else {
+        quote = !quote;
+      }
+    } else if (c === ',' && !quote) {
+      row.push(cell);
+      cell = "";
+    } else if ((c === '\n' || c === '\r') && !quote) {
+      if (c === '\r' && n === '\n') i++;
+      row.push(cell);
+      if (row.some(x => x.trim() !== "")) rows.push(row);
+      row = [];
+      cell = "";
+    } else {
+      cell += c;
     }
+  }
 
-    const months = {
-        jan:0,feb:1,mar:2,apr:3,may:4,jun:5,
-        jul:6,aug:7,sep:8,oct:9,nov:10,dec:11
-    };
+  if (cell !== "" || row.length) {
+    row.push(cell);
+    if (row.some(x => x.trim() !== "")) rows.push(row);
+  }
 
-    const mon = months[m[2].slice(0,3).toLowerCase()];
+  if (!rows.length) return [];
 
-    return mon === undefined
-        ? new Date(value)
-        : new Date(Number(m[3]), mon, Number(m[1]), 23, 59, 59);
+  const headers = rows[0].map(x =>
+    x.replace(/^\uFEFF/, "").trim().toLowerCase()
+  );
+
+  return rows.slice(1).map(r => {
+    const obj = {};
+    headers.forEach((h, i) => {
+      if (h) obj[h] = (r[i] || "").trim();
+    });
+    return obj;
+  });
+}
+
+/* Handles DD/MM/YYYY, DD-MM-YYYY, MM/DD/YYYY and normal browser dates. */
+function parseDate(value) {
+  if (!value) return null;
+
+  const s = String(value).trim();
+
+  let m = s.match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{4})$/);
+  if (m) {
+    return new Date(
+      Number(m[3]),
+      Number(m[2]) - 1,
+      Number(m[1]),
+      23, 59, 59, 999
+    );
+  }
+
+  m = s.match(/^(\d{4})[\/-](\d{1,2})[\/-](\d{1,2})$/);
+  if (m) {
+    return new Date(
+      Number(m[1]),
+      Number(m[2]) - 1,
+      Number(m[3]),
+      23, 59, 59, 999
+    );
+  }
+
+  const d = new Date(s);
+  return isNaN(d) ? null : d;
 }
 
 function isActive(job) {
-    if ((job.status || "").trim().toLowerCase() !== "active") return false;
+  const status = String(job.status || "").trim().toLowerCase();
 
-    if (job.closing_date) {
-        const date = parseDate(job.closing_date);
+  if (status !== "active") return false;
 
-        if (date && !isNaN(date) && date < new Date()) return false;
+  if (job.closing_date) {
+    const date = parseDate(job.closing_date);
+
+    if (date && !isNaN(date.getTime()) && date < new Date()) {
+      return false;
     }
+  }
 
-    return true;
+  return true;
 }
 
 async function loadJobs() {
-    try {
-        const response = await fetch(JOBS_CSV_URL, { cache: "no-store" });
+  $("count").textContent = "Loading jobs...";
+  $("debug").style.display = "none";
 
-        if (!response.ok) throw new Error("Unable to read Google Sheet");
+  try {
+    const url = JOBS_CSV_URL + (JOBS_CSV_URL.includes("?") ? "&" : "?") + "_=" + Date.now();
 
-        jobs = csvParse(await response.text()).filter(isActive);
+    const response = await fetch(url, {
+      method: "GET",
+      cache: "no-store"
+    });
 
-        populateFilters();
-        render();
-    } catch (error) {
-        $("count").textContent = "Unable to load openings";
-        $("jobs").innerHTML =
-            '<div class="empty"><h3>Job openings are temporarily unavailable.</h3>' +
-            '<p>Please try again later or contact HD Facilities.</p></div>';
-
-        console.error(error);
+    if (!response.ok) {
+      throw new Error("Google Sheets returned HTTP " + response.status);
     }
+
+    const csvText = await response.text();
+
+    if (!csvText.trim()) {
+      throw new Error("The published Google Sheet returned an empty CSV.");
+    }
+
+    const allRows = csvParse(csvText);
+
+    if (!allRows.length) {
+      throw new Error("No data rows were found in the published Google Sheet.");
+    }
+
+    /* Ignore accidental blank columns/headers and use only the expected fields. */
+    const expected = [
+      "job_id","job_title","client","location","salary","openings",
+      "experience","job_type","industry","education","shift",
+      "description","status","closing_date"
+    ];
+
+    jobs = allRows.map(row => {
+      const clean = {};
+      expected.forEach(key => clean[key] = row[key] || "");
+      return clean;
+    }).filter(isActive);
+
+    populateFilters();
+    render();
+
+    $("updated").textContent =
+      "Last refreshed: " +
+      new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"});
+
+  } catch (error) {
+    console.error(error);
+
+    $("count").textContent = "Unable to load job openings";
+
+    $("jobs").innerHTML = `
+      <div class="empty">
+        <h3>Job openings could not be loaded.</h3>
+        <p>Please click <b>Refresh Jobs</b> or try again later.</p>
+      </div>
+    `;
+
+    $("debug").style.display = "block";
+    $("debug").textContent =
+      "Technical information: " + error.message +
+      "\\n\\nIf this page is opened by double-clicking the HTML file (file://), " +
+      "please test it from your website hosting or a local web server.";
+  }
 }
 
 function populateFilters() {
-    const locations = [...new Set(jobs.map(j => j.location).filter(Boolean))].sort();
-    const types = [...new Set(jobs.map(j => j.job_type).filter(Boolean))].sort();
+  const locations = [...new Set(
+    jobs.map(j => j.location).filter(Boolean)
+  )].sort();
 
-    $("location").innerHTML =
-        '<option value="">All locations</option>' +
-        locations.map(x => `<option value="${esc(x)}">${esc(x)}</option>`).join("");
+  const types = [...new Set(
+    jobs.map(j => j.job_type).filter(Boolean)
+  )].sort();
 
-    $("type").innerHTML =
-        '<option value="">All job types</option>' +
-        types.map(x => `<option value="${esc(x)}">${esc(x)}</option>`).join("");
+  $("location").innerHTML =
+    '<option value="">All locations</option>' +
+    locations.map(x =>
+      `<option value="${esc(x)}">${esc(x)}</option>`
+    ).join("");
+
+  $("type").innerHTML =
+    '<option value="">All job types</option>' +
+    types.map(x =>
+      `<option value="${esc(x)}">${esc(x)}</option>`
+    ).join("");
 }
 
 function render() {
-    const q = $("q").value.toLowerCase();
-    const location = $("location").value;
-    const type = $("type").value;
+  const q = $("q").value.trim().toLowerCase();
+  const location = $("location").value;
+  const type = $("type").value;
 
-    const filtered = jobs.filter(job =>
-        (!q || JSON.stringify(job).toLowerCase().includes(q)) &&
-        (!location || job.location === location) &&
-        (!type || job.job_type === type)
+  const filtered = jobs.filter(job => {
+    const searchable = Object.values(job).join(" ").toLowerCase();
+
+    return (
+      (!q || searchable.includes(q)) &&
+      (!location || job.location === location) &&
+      (!type || job.job_type === type)
     );
+  });
 
-    $("count").textContent =
-        `${filtered.length} opening${filtered.length === 1 ? "" : "s"} available`;
+  $("count").textContent =
+    filtered.length +
+    " opening" +
+    (filtered.length === 1 ? "" : "s") +
+    " available";
 
-    $("jobs").innerHTML = filtered.length
-        ? filtered.map(jobCard).join("")
-        : '<div class="empty"><h3>No matching openings found.</h3>' +
-          '<p>Try another keyword or location.</p></div>';
+  $("jobs").innerHTML = filtered.length
+    ? filtered.map(jobCard).join("")
+    : `<div class="empty">
+         <h3>No matching openings found.</h3>
+         <p>Try another keyword or location.</p>
+       </div>`;
 }
 
 function jobCard(job) {
-    const close = job.closing_date
-        ? `<br>📅 Apply by: ${esc(job.closing_date)}`
-        : "";
+  return `
+    <article class="job">
+      <h2>${esc(job.job_title)}</h2>
 
-    return `<article class="job">
-        <h2>${esc(job.job_title)}</h2>
+      ${job.location ? `<span class="tag">📍 ${esc(job.location)}</span>` : ""}
+      ${job.job_type ? `<span class="tag">${esc(job.job_type)}</span>` : ""}
+      ${job.industry ? `<span class="tag">${esc(job.industry)}</span>` : ""}
 
-        <span class="tag">📍 ${esc(job.location)}</span>
-        <span class="tag">${esc(job.job_type || "Full Time")}</span>
-        ${job.industry ? `<span class="tag">${esc(job.industry)}</span>` : ""}
+      <div class="meta">
+        ${job.client ? `🏢 ${esc(job.client)}<br>` : ""}
+        ${job.salary ? `💰 ${esc(job.salary)}<br>` : ""}
+        ${job.openings ? `👥 ${esc(job.openings)} opening${String(job.openings) === "1" ? "" : "s"}<br>` : ""}
+        ${job.experience ? `💼 ${esc(job.experience)}${job.education ? " · " + esc(job.education) : ""}<br>` : ""}
+        ${job.shift ? `🕒 ${esc(job.shift)}<br>` : ""}
+        ${job.closing_date ? `📅 Apply by: ${esc(job.closing_date)}` : ""}
+      </div>
 
-        <div class="meta">
-            🏢 ${esc(job.client || "HD Facilities Client")}<br>
-            💰 ${esc(job.salary || "Contact for salary")}<br>
-            👥 ${esc(job.openings || "Multiple")} openings<br>
-            🎓 ${esc(job.experience || "Experience varies")}
-            ${job.education ? " · " + esc(job.education) : ""}<br>
-            ${job.shift ? "🕒 " + esc(job.shift) : ""}${close}
-        </div>
+      ${job.description ? `<p>${esc(job.description)}</p>` : ""}
 
-        <p>${esc(job.description || "Apply now for details.")}</p>
-
-        <button class="apply" onclick='openApply(${JSON.stringify(job).replace(/'/g,"&#39;")})'>
-            Apply Now
-        </button>
-    </article>`;
+      <button class="apply"
+        data-job-id="${esc(job.job_id)}"
+        onclick="openApplyById(this.dataset.jobId)">
+        Apply Now
+      </button>
+    </article>
+  `;
 }
 
 function esc(value) {
-    return String(value ?? "").replace(/[&<>"']/g, c => ({
-        "&":"&amp;",
-        "<":"&lt;",
-        ">":"&gt;",
-        '"':"&quot;",
-        "'":"&#39;"
-    }[c]));
+  return String(value ?? "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  }[c]));
 }
 
-function openApply(job) {
-    $("modal").classList.add("show");
+function openApplyById(id) {
+  const job = jobs.find(j => j.job_id === id);
 
-    $("selectedJob").innerHTML =
-        `<b>${esc(job.job_title)}</b><br>
-         📍 ${esc(job.location)} · 💰 ${esc(job.salary || "Contact for salary")}<br>
-         👥 ${esc(job.openings || "Multiple")} openings`;
+  if (!job) {
+    alert("This job is no longer available.");
+    return;
+  }
 
-    const form = $("applyForm");
+  $("modal").classList.add("show");
 
-    form.job_id.value = job.job_id || "";
-    form.job_title.value = job.job_title || "";
-    form.job_location.value = job.location || "";
+  $("selectedJob").innerHTML = `
+    <b>${esc(job.job_title)}</b><br>
+    ${job.location ? "📍 " + esc(job.location) : ""}
+    ${job.salary ? " · 💰 " + esc(job.salary) : ""}<br>
+    ${job.openings ? "👥 " + esc(job.openings) + " opening(s)" : ""}
+  `;
 
-    $("result").className = "statusmsg";
-    $("result").textContent = "";
+  const form = $("applyForm");
+
+  form.job_id.value = job.job_id || "";
+  form.job_title.value = job.job_title || "";
+  form.job_location.value = job.location || "";
+
+  $("result").className = "statusmsg";
+  $("result").textContent = "";
 }
 
 function closeApply() {
-    $("modal").classList.remove("show");
+  $("modal").classList.remove("show");
 }
 
 $("q").oninput = render;
 $("location").onchange = render;
 $("type").onchange = render;
+$("refreshBtn").onclick = loadJobs;
+
+$("modal").addEventListener("click", function(e) {
+  if (e.target === $("modal")) closeApply();
+});
 
 $("applyForm").onsubmit = async function(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    const form = event.target;
-    const result = $("result");
-    const submit = form.querySelector(".submit");
+  const form = event.target;
+  const result = $("result");
+  const submit = form.querySelector(".submit");
 
-    submit.disabled = true;
-    submit.textContent = "Submitting...";
-    result.className = "statusmsg";
-    result.textContent = "";
+  submit.disabled = true;
+  submit.textContent = "Submitting...";
+  result.className = "statusmsg";
+  result.textContent = "";
 
-    const data = Object.fromEntries(new FormData(form).entries());
+  const data = Object.fromEntries(new FormData(form).entries());
 
-    try {
-        /*
-          Google Apps Script Web App receives this POST,
-          writes the application to the Applications sheet,
-          and sends the HR email.
-        */
-        await fetch(APPLICATION_ENDPOINT, {
-            method: "POST",
-            mode: "no-cors",
-            body: new URLSearchParams(data)
-        });
+  try {
+    /*
+      Sends the candidate data to your Google Apps Script.
+      The Apps Script writes it to the private Applications Sheet
+      and sends the HR notification email.
+    */
+    await fetch(APPLICATION_ENDPOINT, {
+      method: "POST",
+      mode: "no-cors",
+      body: new URLSearchParams(data)
+    });
 
-        form.reset();
+    form.reset();
 
-        result.className = "statusmsg ok";
-        result.textContent =
-            "Application submitted successfully. HD Facilities will contact you.";
+    result.className = "statusmsg ok";
+    result.textContent =
+      "Application submitted successfully. HD Facilities will contact you.";
 
-    } catch (error) {
-        console.error(error);
+  } catch (error) {
+    console.error(error);
 
-        result.className = "statusmsg err";
-        result.textContent =
-            "Unable to submit right now. Please try again.";
-    }
+    result.className = "statusmsg err";
+    result.textContent =
+      "Unable to submit right now. Please try again.";
+  }
 
-    submit.disabled = false;
-    submit.textContent = "Submit Application";
+  submit.disabled = false;
+  submit.textContent = "Submit Application";
 };
 
+/* Load jobs when the page opens. */
 loadJobs();
 </script>
+
 </body>
 </html>
