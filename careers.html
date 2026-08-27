@@ -33,6 +33,28 @@ a{text-decoration:none}
 .refresh{padding:13px 16px;border:1px solid var(--green);background:#fff;color:var(--green);border-radius:9px;font-weight:800;cursor:pointer}
 .refresh:hover{background:var(--light)}
 .info{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;margin:20px 0 15px}
+  .gender-group {
+  margin: 5px 0;
+}
+
+.gender-options {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.gender-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.gender-options input[type="radio"] {
+  width: auto;
+  margin: 0;
+}
 .count{font-weight:800}
 .updated{font-size:13px;color:var(--muted)}
 .jobs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
@@ -133,26 +155,27 @@ a{text-decoration:none}
       <input name="experience" placeholder="Experience">
 
       <input name="current_location" placeholder="Current Location">
+      <div class="full gender-group">
+  <label><strong>Gender *</strong></label>
+
+  <div class="gender-options">
+    <label>
+      <input type="radio" name="gender" value="Male" required>
+      Male
+    </label>
+
+    <label>
+      <input type="radio" name="gender" value="Female">
+      Female
+    </label>
+
+    <label>
+      <input type="radio" name="gender" value="Other">
+      Other
+    </label>
+  </div>
+</div>
      
-  <div class="full">
-  <p><strong>Gender *</strong></p>
-
-  <label>
-    <input type="radio" name="gender" value="Male" required>
-    Male
-  </label>
-
-  <label style="margin-left:20px;">
-    <input type="radio" name="gender" value="Female">
-    Female
-  </label>
-
-  <label style="margin-left:20px;">
-    <input type="radio" name="gender" value="Other">
-    Other
-  </label>
-</div>    <input name="resume_url" placeholder="Resume link (Google Drive/URL)">
-
       <textarea class="full" name="message" rows="4" placeholder="Additional details"></textarea>
 
       <div class="full">
