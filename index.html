@@ -1,133 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>HD Facilities</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f5f7fa;
-    }
-
-    header {
-      background: #1f3c88;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    nav {
-      background: #162a5c;
-      padding: 10px;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      margin: 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .hero {
-      padding: 50px;
-      text-align: center;
-      background: #e3e9f7;
-    }
-
-    .section {
-      padding: 40px;
-      text-align: center;
-    }
-
-    .services {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      margin: 15px;
-      width: 250px;
-      border-radius: 10px;
-      box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
-    }
-
-    footer {
-      background: #1f3c88;
-      color: white;
-      text-align: center;
-      padding: 15px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SWAP Manpower Services - dependable manpower solutions for businesses in Ranipet, Tamil Nadu.">
+<title>SWAP Manpower Services | The Right People. The Right Solution.</title>
+<style>
+:root{--green:#08783f;--green-dark:#04552e;--green-soft:#eaf7f0;--ink:#17212b;--muted:#66727d;--white:#fff;--line:#dce8e1;--shadow:0 18px 45px rgba(9,57,35,.10);--radius:22px}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff;line-height:1.6}a{text-decoration:none;color:inherit}.container{width:min(1180px,92%);margin:auto}
+.topbar{background:var(--green-dark);color:#fff;font-size:13px}.topbar .container{height:40px;display:flex;align-items:center;justify-content:space-between;gap:20px}.top-items{display:flex;gap:28px;flex-wrap:wrap}.top-item{display:flex;align-items:center;gap:7px;opacity:.95}.social{display:flex;gap:8px}.social a{width:27px;height:27px;border:1px solid rgba(255,255,255,.35);border-radius:50%;display:grid;place-items:center;font-size:12px}
+.navbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid #edf2ef}.nav-inner{height:82px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px}.brand-mark{width:48px;height:48px;border:3px solid var(--green);border-radius:15px;position:relative;display:grid;place-items:center;color:var(--green);font-weight:800;font-size:21px}.brand-mark:before,.brand-mark:after{content:"";position:absolute;border:2px solid var(--green);border-radius:50%;width:10px;height:10px;top:7px}.brand-mark:before{left:7px}.brand-mark:after{right:7px}.brand-name{font-size:25px;font-weight:800;letter-spacing:.5px;color:var(--green-dark)}.brand-name small{display:block;font-size:9px;letter-spacing:1.6px;color:#4c5d55;margin-top:-3px}.nav-links{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:700}.nav-links a{position:relative;padding:29px 0}.nav-links a:hover,.nav-links a.active{color:var(--green)}.nav-links a.active:after{content:"";position:absolute;left:0;right:0;bottom:18px;height:3px;border-radius:3px;background:var(--green)}.nav-cta{background:var(--green);color:#fff!important;padding:12px 20px!important;border-radius:10px}.nav-cta:after{display:none}.menu-btn{display:none;background:none;border:0;font-size:28px;color:var(--green);cursor:pointer}
+.hero{background:linear-gradient(110deg,#f4fbf7 0%,#eef8f3 52%,#dceee4 100%);overflow:hidden}.hero-grid{min-height:575px;display:grid;grid-template-columns:44% 56%;align-items:center}.hero-copy{padding:70px 20px 70px 0;position:relative;z-index:2}.eyebrow{display:inline-block;color:var(--green);font-weight:800;font-size:13px;letter-spacing:1.5px;margin-bottom:16px}.hero h1{font-size:clamp(42px,5vw,68px);line-height:1.06;letter-spacing:-2.5px;margin-bottom:22px}.hero h1 span{color:var(--green)}.hero p{font-size:18px;color:#55616a;max-width:520px;margin-bottom:30px}.buttons{display:flex;gap:14px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 23px;border-radius:10px;font-weight:800;border:1px solid var(--green);transition:.2s}.btn-primary{background:var(--green);color:#fff}.btn-primary:hover{background:var(--green-dark);transform:translateY(-2px)}.btn-outline{color:var(--green);background:#fff}.btn-outline:hover{background:var(--green-soft)}.hero-visual{height:575px;position:relative}.hero-visual img{width:100%;height:100%;object-fit:cover;object-position:58% center;display:block;mix-blend-mode:multiply}.hero-visual:before{content:"";position:absolute;left:-100px;top:0;bottom:0;width:220px;background:linear-gradient(90deg,#eef8f3 15%,transparent);z-index:1}
+.section{padding:85px 0}.section-head{text-align:center;margin-bottom:45px}.section-head .eyebrow{margin-bottom:8px}.section-head h2{font-size:38px;letter-spacing:-1px}.section-head p{color:var(--muted);max-width:650px;margin:10px auto 0}.underline{width:52px;height:4px;background:var(--green);border-radius:4px;margin:14px auto 0}
+.services{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}.service-card{padding:28px 18px;border:1px solid var(--line);border-radius:18px;text-align:center;background:#fff;transition:.25s}.service-card:hover{transform:translateY(-7px);box-shadow:var(--shadow);border-color:#b7d8c5}.icon{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:var(--green-soft);color:var(--green);font-size:28px;margin:0 auto 18px;border:1px solid #cbe6d5}.service-card h3{font-size:16px;margin-bottom:8px}.service-card p{font-size:13px;color:var(--muted)}
+.about-wrap{background:linear-gradient(135deg,#edf8f2,#f8fbf9);border-radius:28px;padding:48px;display:grid;grid-template-columns:42% 58%;gap:40px;align-items:center}.about-copy h2{font-size:38px;line-height:1.15;margin-bottom:18px}.about-copy p{color:var(--muted);margin-bottom:22px}.checks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:25px}.check{font-size:13px;font-weight:700;display:flex;gap:8px;align-items:flex-start}.check b{width:20px;height:20px;flex:0 0 20px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:12px}.about-img{height:410px;border-radius:20px;overflow:hidden}.about-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.stats{background:var(--green);color:#fff;border-radius:22px;margin-top:25px;display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden}.stat{padding:25px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.22)}.stat:last-child{border:0}.stat strong{display:block;font-size:38px;line-height:1.1}.stat span{font-size:13px;opacity:.9}
+.industry-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:14px}.industry{padding:25px 10px;border:1px solid var(--line);border-radius:16px;text-align:center;background:#fff;transition:.2s}.industry:hover{border-color:#abd1ba;box-shadow:var(--shadow)}.industry .industry-icon{font-size:29px;color:var(--green);margin-bottom:10px}.industry h4{font-size:13px;line-height:1.3}
+.cta{background:linear-gradient(120deg,var(--green-dark),var(--green));color:#fff;border-radius:26px;padding:55px 60px;display:flex;align-items:center;justify-content:space-between;gap:30px}.cta h2{font-size:35px;line-height:1.15}.cta p{opacity:.9;margin-top:10px}.cta .btn{border-color:#fff;background:#fff;color:var(--green)}
+footer{background:#14211c;color:#dce7e1;margin-top:85px}.footer-grid{padding:60px 0 45px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:40px}.footer-brand p{color:#aebdb6;font-size:13px;max-width:290px;margin:18px 0}.footer-title{color:#fff;font-size:15px;margin-bottom:16px}.footer-links{display:grid;gap:9px;font-size:13px;color:#b8c7c0}.footer-links a:hover{color:#fff}.contact-line{font-size:13px;margin-bottom:12px;color:#c3d0ca}.copyright{border-top:1px solid rgba(255,255,255,.1);padding:18px 0;font-size:12px;color:#9eafa7;display:flex;justify-content:space-between;gap:15px}
+@media(max-width:1050px){.nav-links{gap:17px}.services{grid-template-columns:repeat(3,1fr)}.industry-grid{grid-template-columns:repeat(4,1fr)}.hero-grid{grid-template-columns:1fr}.hero-copy{padding:70px 0 30px}.hero-visual{height:430px}.hero-visual:before{display:none}.about-wrap{grid-template-columns:1fr}.about-img{height:360px}}
+@media(max-width:760px){.topbar{display:none}.nav-inner{height:72px}.menu-btn{display:block}.nav-links{position:absolute;top:72px;left:0;right:0;background:#fff;display:none;flex-direction:column;align-items:stretch;gap:0;padding:10px 5%;box-shadow:0 15px 30px rgba(0,0,0,.08)}.nav-links.open{display:flex}.nav-links a{padding:13px 0}.nav-links a.active:after{display:none}.nav-cta{text-align:center;margin:7px 0}.brand-name{font-size:21px}.brand-mark{width:42px;height:42px}.hero h1{font-size:43px}.hero p{font-size:16px}.section{padding:65px 0}.section-head h2,.about-copy h2{font-size:31px}.services{grid-template-columns:1fr 1fr}.about-wrap{padding:28px}.checks{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.stat{border-bottom:1px solid rgba(255,255,255,.22)}.industry-grid{grid-template-columns:repeat(2,1fr)}.cta{padding:35px 25px;display:block}.cta .btn{margin-top:22px}.footer-grid{grid-template-columns:1fr 1fr}.copyright{display:block}.copyright div+div{margin-top:7px}}
+@media(max-width:470px){.services{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.hero-visual{height:330px}.about-img{height:270px}}
+</style>
 </head>
-
 <body>
-
-<header>
-  <h1>Swap Manpower Solutions</h1>
-  <p>Your Workforce Patner</p>
-</header>
-
-<nav>
-  <a href="#">Home</a>
-  <a href="#">Services</a>
-  <a href="#">About</a>
-  <a href="#">Contact</a>
-</nav>
-
-<div class="hero">
-  <h2>Connecting Talent with Opportunity</h2>
-  <p>We provide skilled manpower across industries with flexible sourcing models.</p>
-</div>
-
-<div class="section">
-  <h2>Our Services</h2>
-
-  <div class="services">
-
-    <div class="card">
-      <h3>Permanent Staffing</h3>
-      <p>Hire full-time employees tailored to your business needs.</p>
-    </div>
-
-    <div class="card">
-      <h3>Contract Staffing</h3>
-      <p>Short-term and project-based hiring solutions.</p>
-    </div>
-
-    <div class="card">
-      <h3>Bulk Hiring</h3>
-      <p>Scalable hiring solutions for large workforce requirements.</p>
-    </div>
-
-    <div class="card">
-      <h3>Executive Search</h3>
-      <p>Find top leadership talent for critical business roles.</p>
-    </div>
-
-  </div>
-</div>
-
-<div class="section">
-  <h2>Why Choose Us?</h2>
-  <p>✔ Industry expertise across multiple domains</p>
-  <p>✔ Fast and reliable sourcing network</p>
-  <p>✔ Skilled and verified candidates</p>
-</div>
-
-<div class="section">
-  <h2>Contact Us</h2>
-  <p>Email: info@swapinfo.com</p>
-  <p>Phone: +91-89704xxxxx</p>
-</div>
-
-<footer>
-  <p>© 2026 Swap Manpower Solutions</p>
-</footer>
-
-</body>
-</html>
+<div class="topbar"><div class="container"><div class="top-items"><span class="top-item">📍 Ranipet, Tamil Nadu</span><span class="top-item">✉ info@swapmanpower.com</span><span class="top-item">☎ +91 12345 67890</span></div><div class="social"><a href="#">f</a><a href="#">wa</a><a href="#">in</a></div></div></div>
+<header class="navbar"><div class="container nav-inner">
+<a class="brand" href="#home"><div class="brand-mark">S</div><div class="brand-name">SWAP<small>MANPOWER SERVICES</small></div></a>
+<button class="menu-btn" aria-label="Open menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+<nav class="nav-links">
+<a class="active" href="#home">Home</a><a href="#about">About Us</a><a href="#services">Our Services</a><a href="#industries">Industries</a><a href="#why-us">Why Us</a><a href="#careers">Careers</a><a href="#contact">Contact Us</a><a class="nav-cta" href="#contact">Get in Touch</a>
+</nav></div></header>
+<main>
+<section class="hero" id="home"><div class="container hero-grid"><div class="hero-copy"><span class="eyebrow">TRUSTED MANPOWER PARTNER</span><h1>The Right People.<br><span>The Right Solution.</span></h1><p>SWAP Manpower Services provides skilled, semi-skilled and unskilled workforce to help your business grow faster and smarter.</p><div class="buttons"><a class="btn btn-primary" href="#services">Our Services →</a><a class="btn btn-outline" href="#contact">Contact Us</a></div></div><div class="hero-visual"><img src="swap-hero-workers.png" alt="Professional industrial workforce"></div></div></section>
+<section class="section" id="services"><div class="container"><div class="section-head"><span class="eyebrow">WHAT WE DO</span><h2>Our Manpower Services</h2><div class="underline"></div></div><div class="services">
+<div class="service-card"><div class="icon">👥</div><h3>Skilled Manpower</h3><p>Experienced and qualified professionals for specialized tasks.</p></div>
+<div class="service-card"><div class="icon">🦺</div><h3>Semi-Skilled Manpower</h3><p>Reliable and trained workforce to support your operations.</p></div>
+<div class="service-card"><div class="icon">🧰</div><h3>Unskilled Manpower</h3><p>Hardworking individuals to handle your general work requirements.</p></div>
+<div class="service-card"><div class="icon">⚙️</div><h3>Contract Staffing</h3><p>Flexible staffing solutions for short-term and long-term needs.</p></div>
+<div class="service-card"><div class="icon">🪪</div><h3>Workforce Management</h3><p>End-to-end manpower management for smooth operations.</p></div>
+<div class="service-card"><div class="icon">✓</div><h3>Payroll & Compliance</h3><p>Complete payroll management with statutory compliance.</p></div>
+</div></div></section>
+<section class="section" id="about" style="padding-top:20px"><div class="container"><div class="about-wrap"><div class="about-copy"><span class="eyebrow">ABOUT SWAP</span><h2>Your Trusted Partner in Manpower Solutions</h2><p>SWAP Manpower Services is a trusted manpower consultancy based in Ranipet, Tamil Nadu. We provide the right talent to businesses across various industries with reliable, efficient and cost-effective workforce solutions.</p><div class="checks"><div class="check"><b>✓</b>Verified & Trained Manpower</div><div class="check"><b>✓</b>Customer Satisfaction Focused</div><div class="check"><b>✓</b>Timely Support & Service</div><div class="check"><b>✓</b>Compliant & Transparent Process</div></div><a class="btn btn-primary" href="#contact">Know More About Us →</a></div><div class="about-img"><img src="swap-about-team.png" alt="SWAP team and industrial workforce"></div></div>
+<div class="stats"><div class="stat"><strong>500+</strong><span>Happy Clients</span></div><div class="stat"><strong>5000+</strong><span>Deployed Workers</span></div><div class="stat"><strong>50+</strong><span>Industries Served</span></div><div class="stat"><strong>10+</strong><span>Years of Experience</span></div></div></div></section>
+<section class="section" id="industries"><div class="container"><div class="section-head"><span class="eyebrow">SECTORS WE SUPPORT</span><h2>Industries We Serve</h2><div class="underline"></div></div><div class="industry-grid"><div class="industry"><div class="industry-icon">🏭</div><h4>Manufacturing</h4></div><div class="industry"><div class="industry-icon">🚗</div><h4>Automobile</h4></div><div class="industry"><div class="industry-icon">📦</div><h4>Logistics & Warehouse</h4></div><div class="industry"><div class="industry-icon">🏗️</div><h4>Construction</h4></div><div class="industry"><div class="industry-icon">🏢</div><h4>Facility Management</h4></div><div class="industry"><div class="industry-icon">🍱</div><h4>Food & Packaging</h4></div><div class="industry"><div class="industry-icon">🛒</div><h4>Retail</h4></div><div class="industry"><div class="industry-icon">🏥</div><h4>Healthcare</h4></div></div></div></section>
+<section class="section" id="why-us" style="padding-top:10px"><div class="container"><div class="cta"><div><span class="eyebrow" style="color:#b9f1ce">LET'S WORK TOGETHER</span><h2>Need dependable manpower for your business?</h2><p>Tell us your manpower requirement and our team will help you find the right workforce.</p></div><a class="btn" href="#contact">Request Manpower →</a></div></div></section>
+<section class="section" id="careers" style="padding-top:20px"><div class="container"><div class="section-head"><span class="eyebrow">JOIN OUR TEAM</span><h2>Build Your Career With SWAP</h2><div class="underline"></div><p>Looking for opportunities in manufacturing, logistics, facility management and other sectors? Share your profile with us.</p></div><div style="text-align:center"><a class="btn btn-primary" href="#contact">Apply Now →</a></div></div></section>
+</main>
+<footer id="contact"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="#home"><div class="brand-mark" style="border-color:#fff;color:#fff">S</div><div class="brand-name" style="color:#fff">SWAP<small style="color:#b7c9c0">MANPOWER SERVICES</small></div></a><p>Providing the right manpower solutions to help your business grow with efficiency and trust.</p><div class="social"><a href="#">f</a><a href="#">wa</a><a href="#">in</a></div></div><div><h3 class="footer-title">Quick Links</h3><div class="footer-links"><a href="#home">Home</a><a href="#about">About Us</a><a href="#services">Our Services</a><a href="#industries">Industries</a><a href="#why-us">Why Us</a><a href="#careers">Careers</a></div></div><div><h3 class="footer-title">Our Services</h3><div class="footer-links"><a href="#services">Skilled Manpower</a><a href="#services">Semi-Skilled Manpower</a><a href="#services">Unskilled Manpower</a><a href="#services">Contract Staffing</a><a href="#services">Workforce Management</a><a href="#services">Payroll & Compliance</a></div></div><div><h3 class="footer-title">Contact Us</h3><div class="contact-line">📍 No. 12, SIPCOT Industrial Area, Ranipet, Tamil Nadu - 632403</div><div class="contact-line">☎ +91 12345 67890</div><div class="contact-line">✉ info@swapmanpower.com</div><div class="contact-line">◷ Mon - Sat : 9:00 AM - 6:00 PM</div></div></div><div class="container copyright"><div>© 2026 SWAP Manpower Services. All Rights Reserved.</div><div>Privacy Policy &nbsp; | &nbsp; Terms & Conditions</div></div></footer>
+<script>document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open')));</script>
+</body></html>
