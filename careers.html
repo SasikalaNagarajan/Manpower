@@ -133,6 +133,13 @@ a{text-decoration:none}
       <input name="experience" placeholder="Experience">
 
       <input name="current_location" placeholder="Current Location">
+            <input name="Age" placeholder="Age">
+      
+  <p>Gender :</p>
+  <input type="radio" id="age1" name="Male" value="30">
+  <input type="radio" id="age2" name="Female" value="60">
+  <input type="radio" id="age3" name="Other" value="100">
+
       <input name="resume_url" placeholder="Resume link (Google Drive/URL)">
 
       <textarea class="full" name="message" rows="4" placeholder="Additional details"></textarea>
@@ -391,9 +398,10 @@ function jobCard(job) {
         ${job.client ? `🏢 ${esc(job.client)}<br>` : ""}
         ${job.salary ? `💰 ${esc(job.salary)}<br>` : ""}
         ${job.openings ? `👥 ${esc(job.openings)} opening${String(job.openings) === "1" ? "" : "s"}<br>` : ""}
-        ${job.experience ? `💼 ${esc(job.experience)}${job.education ? " · " + esc(job.education) : ""}<br>` : ""}
+        ${job.experience ? `💼 ${esc(job.experience)} years<br>` : ""}
+        $(job.education ? `💼 ${esc(job.education)}<br>` : ""}
         ${job.shift ? `🕒 ${esc(job.shift)}<br>` : ""}
-        ${job.closing_date ? `📅 Apply by: ${esc(job.closing_date)}` : ""}
+        ${job.closing_date ? `📅 Last date to Apply: ${esc(job.closing_date)}` : ""}
       </div>
 
       ${job.description ? `<p>${esc(job.description)}</p>` : ""}
