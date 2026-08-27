@@ -234,7 +234,106 @@ footer ul{list-style:none;display:grid;gap:9px}
 }
 </style>
 </head>
+<script>
 
+const ENQUIRY_API_URL =
+  "YOUR_CLIENT_ENQUIRY_APPS_SCRIPT_EXEC_URL";
+
+
+const enquiryForm =
+  document.getElementById("enquiryForm");
+
+const submitButton =
+  document.getElementById("submitEnquiry");
+
+const enquiryMessage =
+  document.getElementById("enquiryMessage");
+
+
+enquiryForm.addEventListener("submit", async function(event) {
+
+  event.preventDefault();
+
+
+  if (!ENQUIRY_API_URL ||
+      ENQUIRY_API_URL === "YOUR_CLIENT_ENQUIRY_APPS_SCRIPT_EXEC_URL") {
+
+    enquiryMessage.style.display = "block";
+    enquiryMessage.innerHTML =
+      "⚠️ Enquiry system is not configured yet.";
+
+    return;
+  }
+
+
+  submitButton.disabled = true;
+
+  submitButton.innerHTML =
+    "Sending...";
+
+
+  enquiryMessage.style.display = "none";
+
+
+  const formData =
+    new FormData(enquiryForm);
+
+
+  try {
+
+    await fetch(
+      ENQUIRY_API_URL,
+      {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+      }
+    );
+
+
+    enquiryMessage.style.display =
+      "block";
+
+    enquiryMessage.innerHTML =
+      "✓ Thank you! Your enquiry has been submitted successfully. Our team will contact you shortly.";
+
+
+    enquiryMessage.style.padding =
+      "14px";
+
+    enquiryMessage.style.marginTop =
+      "15px";
+
+    enquiryMessage.style.borderRadius =
+      "8px";
+
+
+    enquiryForm.reset();
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    enquiryMessage.style.display =
+      "block";
+
+    enquiryMessage.innerHTML =
+      "❌ Something went wrong. Please try again or contact us directly.";
+
+
+  } finally {
+
+    submitButton.disabled = false;
+
+    submitButton.innerHTML =
+      "Send Enquiry →";
+
+  }
+
+});
+
+</script>
 <body>
 
 <header>
@@ -477,28 +576,118 @@ footer ul{list-style:none;display:grid;gap:9px}
       </div>
     </div>
 
-    <form id="enquiryForm">
-      <div class="form-grid">
-        <div class="field"><label for="company">Company Name *</label><input id="company" name="company_name" required></div>
-        <div class="field"><label for="person">Contact Person *</label><input id="person" name="contact_person" required></div>
-        <div class="field"><label for="mobile">Mobile Number *</label><input id="mobile" name="mobile" type="tel" required></div>
-        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email"></div>
-        <div class="field full"><label for="location">Location *</label><input id="location" name="location" placeholder="City / Industrial area" required></div>
-        <div class="field full"><label for="service">Service Required *</label>
-          <select id="service" name="service_required" required>
-            <option value="">Select service</option>
-            <option>Workforce Solutions</option>
-            <option>Housekeeping Materials</option>
-            <option>Safety Products</option>
-            <option>Multiple Services</option>
-            <option>Temporary Workforce</option>
-          </select>
-        </div>
-        <div class="field full"><label for="details">Requirement Details *</label><textarea id="details" name="requirement_details" placeholder="Tell us about manpower count, products, quantities, project duration or any other requirement..." required></textarea></div>
-      </div>
-      <div class="form-actions"><button class="btn btn-primary" type="submit">Submit Enquiry →</button></div>
-      <div class="form-status" id="formStatus"></div>
-    </form>
+  <form id="enquiryForm">
+
+  <div class="form-group">
+    <label for="company_name">Company Name *</label>
+    <input
+      type="text"
+      id="company_name"
+      name="company_name"
+      required
+      placeholder="Enter company name">
+  </div>
+
+  <div class="form-group">
+    <label for="contact_person">Contact Person *</label>
+    <input
+      type="text"
+      id="contact_person"
+      name="contact_person"
+      required
+      placeholder="Enter contact person name">
+  </div>
+
+  <div class="form-group">
+    <label for="mobile">Mobile Number *</label>
+    <input
+      type="tel"
+      id="mobile"
+      name="mobile"
+      required
+      placeholder="Enter mobile number">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email *</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      placeholder="Enter email address">
+  </div>
+
+  <div class="form-group">
+    <label for="location">Location *</label>
+    <input
+      type="text"
+      id="location"
+      name="location"
+      required
+      placeholder="City / Industrial Area">
+  </div>
+
+  <div class="form-group">
+    <label for="service_required">Service Required *</label>
+
+    <select
+      id="service_required"
+      name="service_required"
+      required>
+
+      <option value="">Select a service</option>
+      <option value="Workforce Solutions">
+        Workforce Solutions
+      </option>
+
+      <option value="Housekeeping Materials">
+        Housekeeping Materials
+      </option>
+
+      <option value="Industrial Safety Products">
+        Industrial Safety Products
+      </option>
+
+      <option value="Temporary Workforce">
+        Temporary Workforce
+      </option>
+
+      <option value="Other">
+        Other
+      </option>
+
+    </select>
+  </div>
+
+  <div class="form-group full-width">
+    <label for="requirement_details">
+      Requirement Details *
+    </label>
+
+    <textarea
+      id="requirement_details"
+      name="requirement_details"
+      rows="5"
+      required
+      placeholder="Tell us about your requirement..."></textarea>
+  </div>
+
+  <button
+    type="submit"
+    id="submitEnquiry"
+    class="btn btn-primary">
+
+    Send Enquiry →
+
+  </button>
+
+  <div
+    id="enquiryMessage"
+    style="display:none;">
+  </div>
+
+</form>
   </div>
 </section>
 
@@ -584,7 +773,7 @@ footer ul{list-style:none;display:grid;gap:9px}
   Example:
   const ENQUIRY_API_URL = "https://script.google.com/macros/s/AKfycby-EpcZmSg5K5bHDsKJdjRXZk4c2mdmbI01rMinhLKsYXWxWgJFMPKfVfeUurgqz3_GBA/exec";
 */
-const ENQUIRY_API_URL = "";
+const ENQUIRY_API_URL = "https://script.google.com/macros/s/AKfycby-EpcZmSg5K5bHDsKJdjRXZk4c2mdmbI01rMinhLKsYXWxWgJFMPKfVfeUurgqz3_GBA/exec";
 
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
@@ -594,6 +783,7 @@ document.querySelectorAll("#navLinks a").forEach(a => a.addEventListener("click"
 
 const modal = document.getElementById("quoteModal");
 
+  
 function openQuote(service=""){
   modal.classList.add("show");
   modal.setAttribute("aria-hidden","false");
