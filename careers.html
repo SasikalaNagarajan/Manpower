@@ -330,7 +330,7 @@ async function loadJobs() {
 
     /* Ignore accidental blank columns/headers and use only the expected fields. */
     const expected = [
-      "job_id","job_title","client","location","salary","openings",
+      "job_id","job_title","posted_on","client","location","salary","openings",
       "experience","job_type","industry","education","shift",
       "description","status","closing_date"
     ];
@@ -429,6 +429,7 @@ function jobCard(job) {
       ${job.industry ? `<span class="tag">${esc(job.industry)}</span>` : ""}
 
       <div class="meta">
+              ${job.client ? `📅 Company Name: ${esc(job.posted_on)}<br>` : ""}
         ${job.client ? `🏢 Company Name: ${esc(job.client)}<br>` : ""}
         ${job.salary ? `💰 ${esc(job.salary)}<br>` : ""}
         ${job.openings ? `👥 ${esc(job.openings)} opening${String(job.openings) === "1" ? "" : "s"}<br>` : ""}
