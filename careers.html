@@ -33,28 +33,6 @@ a{text-decoration:none}
 .refresh{padding:13px 16px;border:1px solid var(--green);background:#fff;color:var(--green);border-radius:9px;font-weight:800;cursor:pointer}
 .refresh:hover{background:var(--light)}
 .info{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;margin:20px 0 15px}
-  .gender-group {
-  margin: 5px 0;
-}
-
-.gender-options {
-  display: flex;
-  gap: 25px;
-  align-items: center;
-  margin-top: 8px;
-}
-
-.gender-options label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-}
-
-.gender-options input[type="radio"] {
-  width: auto;
-  margin: 0;
-}
 .count{font-weight:800}
 .updated{font-size:13px;color:var(--muted)}
 .jobs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
@@ -86,6 +64,13 @@ a{text-decoration:none}
   .hero h1{font-size:35px}
   .wrap{padding:0}
 }
+
+.floating-actions{position:fixed;right:20px;bottom:92px;z-index:950;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.floating-careers{display:inline-flex;align-items:center;gap:9px;padding:11px 16px;border-radius:999px;background:#fff;color:var(--dark);border:1px solid var(--line);font-size:14px;font-weight:800;box-shadow:0 12px 30px #0002;transition:.25s}
+.floating-careers:hover{transform:translateY(-2px);border-color:var(--green);color:var(--green)}
+.floating-careers .fc-icon{width:27px;height:27px;border-radius:50%;background:var(--light);display:grid;place-items:center;font-size:14px}
+.whatsapp{position:fixed;right:20px;bottom:20px;width:57px;height:57px;border-radius:50%;background:#20b765;color:#fff;display:grid;place-items:center;font-size:24px;z-index:900;box-shadow:0 12px 30px #0003}
+@media(max-width:600px){.floating-actions{right:13px;bottom:82px}.floating-careers{padding:10px 13px;font-size:13px}.floating-careers .fc-icon{width:25px;height:25px}}
 </style>
 </head>
 <body>
@@ -96,10 +81,15 @@ a{text-decoration:none}
   <a class="brand" href="index.html">HD Facilities</a>
   <div class="links">
     <a href="index.html">Home</a>
-    <a href="index.html#about">About</a>
-    <a href="index.html#services">Services</a>
+    <a href="workforce.html">Workforce</a>
+    <a href="hr-services.html">HR Services</a>
+    <a href="it-services.html">IT Services</a>
+    <a href="permanent-placement.html">Placement</a>
+    <a href="mobility-services.html">Mobility</a>
+    <a href="materials.html">Materials</a>
+    <a href="safety.html">Safety</a>
     <a href="careers.html">Careers</a>
-    <a href="index.html#contact">Contact</a>
+    <a href="contact.html">Contact</a>
   </div>
 </nav>
 
@@ -115,6 +105,11 @@ a{text-decoration:none}
 
 <main class="wrap main">
 
+  <div class="note">
+    <b>Live vacancies:</b>
+    Jobs are loaded directly from the HD Facilities Google Sheet.
+    Jobs marked <b>Active</b> are shown. Jobs with a past closing date are automatically hidden.
+  </div>
 
   <div class="tools">
     <input id="q" placeholder="Search job title, client or keyword">
@@ -155,27 +150,8 @@ a{text-decoration:none}
       <input name="experience" placeholder="Experience">
 
       <input name="current_location" placeholder="Current Location">
-      <div class="full gender-group">
-  <label><strong>Gender *</strong></label>
+      <input name="resume_url" placeholder="Resume link (Google Drive/URL)">
 
-  <div class="gender-options">
-    <label>
-      <input type="radio" name="gender" value="Male" required>
-      Male
-    </label>
-
-    <label>
-      <input type="radio" name="gender" value="Female">
-      Female
-    </label>
-
-    <label>
-      <input type="radio" name="gender" value="Other">
-      Other
-    </label>
-  </div>
-</div>
-     
       <textarea class="full" name="message" rows="4" placeholder="Additional details"></textarea>
 
       <div class="full">
@@ -194,7 +170,7 @@ a{text-decoration:none}
 
 <script>
 const JOBS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRSaxCikvrLtCynn_ERSZSLfmThF12JMDErQEZQ4rBXIbweIy808ImkwsRza5ueL4eniuHtG_rhi8uA/pub?output=csv";
-const APPLICATION_ENDPOINT = "https://script.google.com/macros/s/AKfycbwQPyNenyN43If8ic4tsds7wW9IzdzWGnkCc4b362Ma4SMtzY4NUt1MdCCQAa6wTMwTUw/exec";
+const APPLICATION_ENDPOINT = "https://script.google.com/macros/s/AKfycbwr_5D68lGs0yM_4LWmw7oZC5Vm7t_YBvQZQjwsM_pZuw9RB7Ew9Bvr4FvqoQKWW5eV3w/exec";
 
 let jobs = [];
 
@@ -429,13 +405,12 @@ function jobCard(job) {
       ${job.industry ? `<span class="tag">${esc(job.industry)}</span>` : ""}
 
       <div class="meta">
-        ${job.client ? `🏢 Company Name: ${esc(job.client)}<br>` : ""}
+        ${job.client ? `🏢 ${esc(job.client)}<br>` : ""}
         ${job.salary ? `💰 ${esc(job.salary)}<br>` : ""}
         ${job.openings ? `👥 ${esc(job.openings)} opening${String(job.openings) === "1" ? "" : "s"}<br>` : ""}
-        ${job.experience ? `💼 Required experience: ${esc(job.experience)} years<br>` : ""}
-        ${job.education ? `💼 Education Qualification:  ${esc(job.education)}<br>` : ""}
+        ${job.experience ? `💼 ${esc(job.experience)}${job.education ? " · " + esc(job.education) : ""}<br>` : ""}
         ${job.shift ? `🕒 ${esc(job.shift)}<br>` : ""}
-        ${job.closing_date ? `📅 Last date to Apply: ${esc(job.closing_date)}` : ""}
+        ${job.closing_date ? `📅 Apply by: ${esc(job.closing_date)}` : ""}
       </div>
 
       ${job.description ? `<p>${esc(job.description)}</p>` : ""}
@@ -547,5 +522,7 @@ $("applyForm").onsubmit = async function(event) {
 loadJobs();
 </script>
 
+<div class="floating-actions" aria-label="Quick actions"><a class="floating-careers" href="careers.html" aria-label="Explore Careers"><span class="fc-icon">💼</span> Careers</a></div>
+<a class="whatsapp" href="https://wa.me/919994704577" target="_blank" rel="noopener" aria-label="Chat with HD Facilities on WhatsApp">◔</a>
 </body>
 </html>
