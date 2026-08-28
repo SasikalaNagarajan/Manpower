@@ -429,7 +429,7 @@ function jobCard(job) {
       ${job.industry ? `<span class="tag">${esc(job.industry)}</span>` : ""}
 
       <div class="meta">
-              ${job.client ? `📅 Company Name: ${esc(job.posted_on)}<br>` : ""}
+              ${job.client ? `📅 Job Posted On: ${esc(job.posted_on)}<br>` : ""}
         ${job.client ? `🏢 Company Name: ${esc(job.client)}<br>` : ""}
         ${job.salary ? `💰 ${esc(job.salary)}<br>` : ""}
         ${job.openings ? `👥 ${esc(job.openings)} opening${String(job.openings) === "1" ? "" : "s"}<br>` : ""}
