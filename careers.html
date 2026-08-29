@@ -18,11 +18,6 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f7faf8;color:var(--text)}
 a{text-decoration:none}
-.top{background:var(--dark);color:#fff;text-align:right;padding:9px 6%;font-size:13px}
-.brand{font-size:25px;font-weight:800;color:var(--green)}
-.links{display:flex;gap:25px;font-weight:700}
-.links a{color:var(--text)}
-.links a:hover{color:var(--green)}
 .hero{background:linear-gradient(120deg,var(--light),#fff);padding:55px 6% 45px}
 .wrap{max-width:1250px;margin:auto}
 .hero h1{font-size:45px;margin:5px 0}
@@ -81,7 +76,6 @@ a{text-decoration:none}
 .err{display:block;background:#fff0f0;color:#a32121}
 .note{background:#fff9e6;border:1px solid #f0d88b;padding:12px;border-radius:10px;font-size:13px;margin-bottom:15px}
 @media(max-width:900px){
-  .links{display:none}
   .tools,.jobs,.formgrid{grid-template-columns:1fr}
   .hero h1{font-size:35px}
   .wrap{padding:0}
@@ -90,23 +84,40 @@ a{text-decoration:none}
 </head>
 <body>
 
-<div class="top">HD Facilities Careers</div>
+<div class="topbar">
+  <div class="container inner">
+    <div>
+      <span>📍 Ranipet, Tamil Nadu</span>
+      <span>✉ info@hdfacilities.com</span>
+      <span>☎ +91 99947 04577</span>
+    </div>
+    <div>Business &amp; Workforce Solutions</div>
+  </div>
+</div>
 
-<div class="container nav">
-<a class="brand" href="#home"><span class="brand-mark">HD</span><span class="brand-name">HD Facilities<small>FACILITY SOLUTIONS</small></span></a>
-<button class="menu" id="menuBtn" aria-label="Open navigation">☰</button>
-<nav class="nav-links" id="navLinks">
-                    <a href="index.html" class="active">Home</a>
-                    <a href="workforce.html">Workforce</a>
-                    <a href="hr-services.html">HR Services</a>
-                    <a href="it-services.html">IT Services</a>
-                    <a href="permanent-placement.html">Permanent Placement</a>
-                    <a href="mobility-services.html">Mobility</a>
-                    <a href="materials.html">Materials</a>
-                    <a href="safety.html">Safety</a>
-                    <a href="careers.html">Careers</a>
-                    <a href="contact.html">Contact</a>
-</nav></div>
+<header class="navbar">
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="HD Facilities Home">
+      <span class="brand-mark">HD</span>
+      <span class="brand-name">HD Facilities<small>FACILITY SOLUTIONS</small></span>
+    </a>
+
+    <button class="menu" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+
+    <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="workforce.html">Workforce</a>
+      <a href="hr-services.html">HR Services</a>
+      <a href="it-services.html">IT Services</a>
+      <a href="permanent-placement.html">Permanent Placement</a>
+      <a href="mobility-services.html">Mobility</a>
+      <a href="materials.html">Materials</a>
+      <a href="safety.html">Safety</a>
+      <a href="careers.html" class="active">Careers</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
 
 <header class="hero">
   <div class="wrap">
@@ -552,6 +563,7 @@ $("applyForm").onsubmit = async function(event) {
 /* Load jobs when the page opens. */
 loadJobs();
 </script>
+<script src="script.js"></script>
 
 </body>
 </html>

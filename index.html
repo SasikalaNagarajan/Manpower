@@ -33,7 +33,7 @@
 <main id="home">
 <section class="hero"><div class="container hero-grid">
 <div><div class="eyebrow">One partner. Multiple business solutions.</div>
-<h1>The Right People.<br><span>The Right Solution.</span></h1>
+<h1>The Right Partner.<br><span class="hero-rotator" aria-live="polite">The Right Workforce.</span></h1>
 <p>HD Facilities connects businesses with dependable workforce, HR and IT support, permanent hiring, mobility workforce, housekeeping materials and industrial safety products.</p>
 <div class="actions"><a class="btn btn-primary" href="#services">Explore Our Services →</a><a class="btn btn-outline" href="#contact">Request a Business Enquiry</a></div>
 <div class="hero-pills"><span class="pill">Skilled & Unskilled Workforce</span><span class="pill">B2B Solutions</span><span class="pill">Fast Response</span></div></div>
@@ -57,7 +57,68 @@
 <a class="service-card" href="careers.html"><div class="service-icon">💼</div><h3>Careers</h3><p>View current openings, search available jobs and apply directly through the HD Facilities careers portal.</p><span class="explore">View Open Positions →</span></a>
 </div></div></section>
 
+<section class="section spotlight-section" id="service-spotlight">
+  <div class="container">
+    <div class="spotlight-heading">
+      <div class="section-head">
+        <div class="eyebrow">Business solution spotlight</div>
+        <h2>Discover what HD Facilities can do for your business.</h2>
+        <p>Explore our core divisions through one focused view. Each solution is designed to support a different part of your business operations.</p>
+      </div>
+      <div class="spotlight-controls" aria-label="Service spotlight controls">
+        <button class="spotlight-arrow" id="spotPrev" aria-label="Previous service">←</button>
+        <button class="spotlight-arrow" id="spotNext" aria-label="Next service">→</button>
+      </div>
+    </div>
 
+    <div class="service-spotlight" id="serviceSpotlight">
+      <article class="spotlight-slide active" data-service="Workforce Solutions">
+        <div class="spotlight-content">
+          <span class="spotlight-number">01 / 07</span><div class="spotlight-icon">👷</div>
+          <h3>Workforce Solutions</h3>
+          <p>Flexible manpower support for industrial, commercial and project-based operations — from skilled professionals to semi-skilled and unskilled workers.</p>
+          <div class="spotlight-tags"><span>Contract Staffing</span><span>Temporary Workforce</span><span>Project Manpower</span><span>Skilled & Unskilled</span></div>
+          <a class="btn btn-primary" href="workforce.html">Explore Workforce Solutions →</a>
+        </div>
+        <div class="spotlight-image"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85" alt="Professional workforce team"></div>
+      </article>
+
+      <article class="spotlight-slide" data-service="HR Services">
+        <div class="spotlight-content"><span class="spotlight-number">02 / 07</span><div class="spotlight-icon">👥</div><h3>HR Services</h3><p>Practical recruitment and HR support to help businesses manage people, hiring requirements and day-to-day workforce operations.</p><div class="spotlight-tags"><span>Recruitment Support</span><span>HR Operations</span><span>Candidate Screening</span><span>People Management</span></div><a class="btn btn-primary" href="hr-services.html">Explore HR Services →</a></div>
+        <div class="spotlight-image"><img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85" alt="HR professionals discussing business"></div>
+      </article>
+
+      <article class="spotlight-slide" data-service="IT Services">
+        <div class="spotlight-content"><span class="spotlight-number">03 / 07</span><div class="spotlight-icon">💻</div><h3>IT Services</h3><p>Focused technology support for business operations, including infrastructure assistance and practical digital solutions.</p><div class="spotlight-tags"><span>IT Support</span><span>Infrastructure</span><span>Business Systems</span><span>Digital Support</span></div><a class="btn btn-primary" href="it-services.html">Explore IT Services →</a></div>
+        <div class="spotlight-image"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=85" alt="IT professionals collaborating"></div>
+      </article>
+
+      <article class="spotlight-slide" data-service="Permanent Placement">
+        <div class="spotlight-content"><span class="spotlight-number">04 / 07</span><div class="spotlight-icon">🎯</div><h3>Permanent Placement</h3><p>We help employers find suitable candidates for long-term roles through direct sourcing, screening and successful placement.</p><div class="spotlight-tags"><span>Candidate Sourcing</span><span>Screening</span><span>Direct Hiring</span><span>One-Time Placement</span></div><a class="btn btn-primary" href="permanent-placement.html">Explore Permanent Placement →</a></div>
+        <div class="spotlight-image"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85" alt="Professional interview and recruitment meeting"></div>
+      </article>
+
+      <article class="spotlight-slide" data-service="Mobility Services">
+        <div class="spotlight-content"><span class="spotlight-number">05 / 07</span><div class="spotlight-icon">🚚</div><h3>Mobility Services</h3><p>Workforce support for delivery, last-mile logistics, e-commerce and quick-commerce operations that need flexible field teams.</p><div class="spotlight-tags"><span>Delivery Workforce</span><span>Last-Mile</span><span>Logistics</span><span>Quick Commerce</span></div><a class="btn btn-primary" href="mobility-services.html">Explore Mobility Services →</a></div>
+        <div class="spotlight-image"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85" alt="Warehouse and logistics operations"></div>
+      </article>
+
+      <article class="spotlight-slide" data-service="Housekeeping Materials">
+        <div class="spotlight-content"><span class="spotlight-number">06 / 07</span><div class="spotlight-icon">🧹</div><h3>Housekeeping Materials</h3><p>Industrial cleaning materials, tools, equipment and consumables for daily facility and housekeeping requirements.</p><div class="spotlight-tags"><span>Cleaning Chemicals</span><span>Tools</span><span>Equipment</span><span>Consumables</span></div><a class="btn btn-primary" href="materials.html">Explore Materials →</a></div>
+        <div class="spotlight-image"><img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=1200&q=85" alt="Professional cleaning supplies"></div>
+      </article>
+
+      <article class="spotlight-slide" data-service="Safety Products">
+        <div class="spotlight-content"><span class="spotlight-number">07 / 07</span><div class="spotlight-icon">🦺</div><h3>Industrial Safety Products</h3><p>Workplace protection products ranging from everyday PPE to fire safety, first aid and industrial safety equipment.</p><div class="spotlight-tags"><span>PPE</span><span>Fire Safety</span><span>First Aid</span><span>Workplace Protection</span></div><a class="btn btn-primary" href="safety.html">Explore Safety Products →</a></div>
+        <div class="spotlight-image"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=85" alt="Industrial safety equipment and construction worker"></div>
+      </article>
+    </div>
+
+    <div class="spotlight-dots" id="spotDots" aria-label="Select service spotlight">
+      <button class="active" aria-label="Workforce Solutions"></button><button aria-label="HR Services"></button><button aria-label="IT Services"></button><button aria-label="Permanent Placement"></button><button aria-label="Mobility Services"></button><button aria-label="Housekeeping Materials"></button><button aria-label="Safety Products"></button>
+    </div>
+  </div>
+</section>
 
 <section class="section features workforce" id="why-us">
     <div class="container">
@@ -237,6 +298,43 @@ const ENQUIRY_API_URL="https://script.google.com/macros/s/AKfycby-EpcZmSg5K5bHDs
 const menuBtn=document.getElementById("menuBtn"),nav=document.getElementById("navLinks");
 menuBtn.addEventListener("click",()=>nav.classList.toggle("open"));
 document.querySelectorAll("#navLinks a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+
+
+// Homepage rotating service spotlight
+(function(){
+  const slides = Array.from(document.querySelectorAll('.spotlight-slide'));
+  const dots = Array.from(document.querySelectorAll('#spotDots button'));
+  const prev = document.getElementById('spotPrev');
+  const next = document.getElementById('spotNext');
+  const spotlight = document.getElementById('serviceSpotlight');
+  const heroRotator = document.querySelector('.hero-rotator');
+  if(!slides.length) return;
+  let current = 0;
+  let timer;
+  const heroWords = ['The Right Workforce.','The Right Talent.','The Right Support.','The Right Solution.'];
+  let heroIndex = 0;
+
+  function show(index){
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide,i)=>slide.classList.toggle('active',i===current));
+    dots.forEach((dot,i)=>{dot.classList.toggle('active',i===current);dot.setAttribute('aria-current',i===current?'true':'false');});
+  }
+  function start(){ clearInterval(timer); timer=setInterval(()=>show(current+1),5500); }
+  prev?.addEventListener('click',()=>{show(current-1);start();});
+  next?.addEventListener('click',()=>{show(current+1);start();});
+  dots.forEach((dot,i)=>dot.addEventListener('click',()=>{show(i);start();}));
+  spotlight?.addEventListener('mouseenter',()=>clearInterval(timer));
+  spotlight?.addEventListener('mouseleave',start);
+  start();
+
+  if(heroRotator){
+    setInterval(()=>{
+      heroRotator.classList.add('changing');
+      setTimeout(()=>{heroIndex=(heroIndex+1)%heroWords.length;heroRotator.textContent=heroWords[heroIndex];heroRotator.classList.remove('changing');},180);
+    },3200);
+  }
+})();
+
 document.getElementById("year").textContent=new Date().getFullYear();
 document.getElementById("enquiryForm").addEventListener("submit",async e=>{
  e.preventDefault(); const form=e.target,status=document.getElementById("formStatus"); status.style.display="block"; status.textContent="Sending your enquiry...";
