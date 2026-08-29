@@ -1,4 +1,4 @@
-const ENQUIRY_API_URL="https://script.google.com/macros/s/AKfycby-EpcZmSg5K5bHDsKJdjRXZk4c2mdmbI01rMinhLKsYXWxWgJFMPKfVfeUurgqz3_GBA/exec";
+const ENQUIRY_API_URL="https://script.google.com/macros/s/AKfycbylKZJ_1g8k3dHujEj8-8KyhregsRv7HxqQ1sAp5Bl5tMCjttMW3pcv8Wae_bVBQL-7QA/exec";
 
 /* Navigation */
 const menuBtn=document.getElementById("menuBtn");
