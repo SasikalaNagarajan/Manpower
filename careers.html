@@ -76,10 +76,16 @@ button,input,select,textarea{font:inherit}
 .register-btn{border:0;background:var(--green);color:#fff;border-radius:9px;padding:13px 20px;font-weight:900;white-space:nowrap;cursor:pointer}
 .register-btn:hover{opacity:.92}
 
-.modal{display:none;position:fixed;inset:0;background:#0008;z-index:50;align-items:center;justify-content:center;padding:20px}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:9999;align-items:center;justify-content:center;padding:20px;padding-top:max(20px,env(safe-area-inset-top));padding-bottom:max(20px,env(safe-area-inset-bottom))}
 .modal.show{display:flex}
-.box{background:#fff;width:min(720px,100%);max-height:92vh;overflow:auto;border-radius:16px;padding:28px;position:relative}
-.close{position:absolute;right:18px;top:12px;border:0;background:none;font-size:27px;cursor:pointer}
+.box{background:#fff;width:min(720px,100%);max-height:92vh;overflow:auto;border-radius:16px;padding:14px 28px 28px;position:relative;-webkit-overflow-scrolling:touch}
+.close{position:sticky;top:0;margin-left:auto;display:flex;align-items:center;justify-content:center;width:42px;height:42px;border:0;background:#fff;color:#063d25;border-radius:50%;font-size:30px;line-height:1;cursor:pointer;z-index:20;box-shadow:0 2px 10px #0002}
+.close:hover{background:#effaf4;color:#08783f}
+@media(max-width:600px){
+ .modal{align-items:flex-start;padding:10px 10px max(10px,env(safe-area-inset-bottom));}
+ .box{width:100%;max-height:calc(100vh - 20px);border-radius:14px;padding:8px 18px 24px}
+ .close{width:44px;height:44px;font-size:31px}
+}
 .jobsummary{background:var(--light);padding:14px;border-radius:10px;margin-bottom:16px}
 .formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .formgrid .full{grid-column:1/-1}
@@ -612,7 +618,7 @@ function openApplyById(id){
     return;
   }
 
-  $("modal").classList.add("show");
+  showModalWithHistory("modal");
 
   $("selectedJob").innerHTML = `
     <b>${esc(job.job_title)}</b><br>
@@ -817,6 +823,69 @@ $("menuBtn").addEventListener("click",function(){
     "aria-expanded",
     String(!open)
   );
+});
+
+/* =====================================================
+   MODAL / MOBILE BACK BUTTON
+===================================================== */
+
+let modalHistoryOpen = false;
+
+function showModalWithHistory(id){
+  $(id).classList.add("show");
+
+  if(!modalHistoryOpen){
+    history.pushState({hdFacilitiesModal:true}, "");
+    modalHistoryOpen = true;
+  }
+}
+
+function hideModal(id, updateHistory = true){
+  $(id).classList.remove("show");
+
+  if(
+    updateHistory &&
+    modalHistoryOpen
+  ){
+    modalHistoryOpen = false;
+    history.back();
+  }else{
+    modalHistoryOpen = false;
+  }
+}
+
+const originalOpenRegistration = openRegistration;
+openRegistration = function(){
+  showModalWithHistory("registerModal");
+};
+
+const originalCloseRegistration = closeRegistration;
+closeRegistration = function(){
+  hideModal("registerModal", true);
+};
+
+const originalCloseApply = closeApply;
+closeApply = function(){
+  hideModal("modal", true);
+};
+
+window.addEventListener("popstate", function(){
+  if(modalHistoryOpen){
+    modalHistoryOpen = false;
+    $("modal").classList.remove("show");
+    $("registerModal").classList.remove("show");
+  }
+});
+
+/* Close with Escape on desktop */
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    if($("modal").classList.contains("show")){
+      closeApply();
+    }else if($("registerModal").classList.contains("show")){
+      closeRegistration();
+    }
+  }
 });
 
 /* Initial load */
