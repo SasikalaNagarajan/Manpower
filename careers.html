@@ -93,6 +93,10 @@ button,input,select,textarea{font:inherit}
 .submit{width:100%;padding:14px;background:var(--green);color:#fff;border:0;border-radius:8px;font-weight:800;font-size:16px;cursor:pointer}
 .submit:disabled{opacity:.6}
 .statusmsg{padding:12px;border-radius:9px;margin-top:12px;display:none;line-height:1.5}
+.success-toast{position:fixed;right:18px;bottom:18px;z-index:10000;background:#08783f;color:#fff;padding:16px 20px;border-radius:12px;box-shadow:0 8px 28px #0003;display:none;max-width:360px;font-weight:700}
+.success-toast.show{display:block}
+.success-toast small{display:block;font-weight:400;margin-top:4px;opacity:.9}
+@media(max-width:600px){.success-toast{left:14px;right:14px;bottom:14px;max-width:none}}
 .ok{display:block;background:#e9f8ef;color:#116b3c}
 .err{display:block;background:#fff0f0;color:#a32121}
 .gender-group{margin:5px 0}
@@ -327,6 +331,11 @@ button,input,select,textarea{font:inherit}
 
     <div id="result" class="statusmsg"></div>
   </div>
+</div>
+
+<div id="successToast" class="success-toast">
+  <span id="successToastTitle">Submitted successfully</span>
+  <small id="successToastText">Thank you. Our HR team will review your profile.</small>
 </div>
 
 <script>
@@ -688,16 +697,44 @@ async function filePayload(inputId){
 
 async function submitToServer(data){
   /*
-    Apps Script web apps normally require no-cors from a static website.
-    The browser cannot read the JSON response, but a completed fetch means
-    the request was sent. Server-side validation and email handling remain
-    in Apps Script.
+    Apps Script is called with no-cors because this website and the
+    Apps Script web app are on different origins. The browser receives
+    an opaque response, so the client cannot inspect the server JSON.
+    A resolved fetch means the request was sent/received at network level.
   */
-  await fetch(APPLICATION_ENDPOINT,{
-    method:"POST",
-    mode:"no-cors",
-    body:new URLSearchParams(data)
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 30000);
+
+  try{
+    await fetch(APPLICATION_ENDPOINT,{
+      method:"POST",
+      mode:"no-cors",
+      body:new URLSearchParams(data),
+      signal:controller.signal
+    });
+  }finally{
+    clearTimeout(timeout);
+  }
+}
+
+function showSuccessAndClose(modalId, resultId, title, text){
+  const result = $(resultId);
+  result.className = "statusmsg ok";
+  result.textContent = title;
+
+  $("successToastTitle").textContent = title;
+  $("successToastText").textContent = text;
+  $("successToast").classList.add("show");
+
+  setTimeout(() => {
+    if(modalId === "modal"){
+      closeApply();
+    }else{
+      closeRegistration();
+    }
+
+    $("successToast").classList.remove("show");
+  }, 2200);
 }
 
 /* Search / filters */
@@ -748,9 +785,12 @@ $("applyForm").onsubmit = async function(event){
 
     form.reset();
 
-    result.className = "statusmsg ok";
-    result.textContent =
-      "Application submitted successfully. HD Facilities will contact you if your profile matches the requirement.";
+    showSuccessAndClose(
+      "modal",
+      "result",
+      "Application submitted successfully.",
+      "Thank you. HD Facilities will contact you if your profile matches the requirement."
+    );
 
   }catch(error){
     console.error(error);
@@ -793,9 +833,12 @@ $("registerForm").onsubmit = async function(event){
 
     form.reset();
 
-    result.className = "statusmsg ok";
-    result.textContent =
-      "Profile registered successfully. Our HR team will contact you if a suitable opportunity is available.";
+    showSuccessAndClose(
+      "registerModal",
+      "registerResult",
+      "Profile submitted successfully.",
+      "Thank you. Our HR team will contact you if a suitable opportunity is available."
+    );
 
   }catch(error){
     console.error(error);
