@@ -109,8 +109,13 @@ button,input,select,textarea{font:inherit}
 .upload-field small{display:block;margin-top:7px;color:var(--muted);font-size:12px;line-height:1.4}
 .optional{font-weight:500;color:var(--muted)}
 
+/* CAREERS PAGE NAV OVERRIDE — desktop navigation must never use the mobile dropdown */
+.nav-links{display:flex !important;position:static !important;flex-direction:row !important;align-items:center !important;gap:16px !important;width:auto !important;max-height:none !important;overflow:visible !important;background:transparent !important;border:0 !important;border-radius:0 !important;padding:0 !important;box-shadow:none !important;animation:none !important;}
+.menu{display:none !important;}
+
 @media(max-width:900px){
- .nav-links{display:none}
+ .nav-links{display:none !important;}
+ .nav-links.mobile-open{display:flex !important;position:absolute !important;top:100% !important;left:0 !important;right:0 !important;flex-direction:column !important;align-items:flex-start !important;width:auto !important;max-height:calc(100vh - 80px) !important;overflow-y:auto !important;background:#fff !important;border-top:1px solid var(--line) !important;border-bottom:1px solid var(--line) !important;border-radius:0 !important;padding:14px 22px 18px !important;box-shadow:0 8px 18px #00000012 !important;animation:none !important;}
  .nav-links.mobile-open{
    display:flex;
    flex-direction:column;
@@ -877,7 +882,10 @@ const menuBtn = $("menuBtn");
 const navLinks = $("navLinks");
 
 function closeMobileMenu(){
-  navLinks.classList.remove("mobile-open");
+  navLinks.classList.remove("mobile-open","open");
+  navLinks.style.removeProperty("display");
+  navLinks.style.removeProperty("flex-direction");
+  navLinks.style.removeProperty("align-items");
   menuBtn.setAttribute("aria-expanded","false");
 }
 
@@ -974,6 +982,19 @@ document.addEventListener("keydown", function(e){
     }
   }
 });
+
+/* Final navigation reset on page load and viewport changes */
+function resetNavigationForViewport(){
+  if(window.innerWidth > 900){
+    navLinks.classList.remove("mobile-open","open");
+    navLinks.style.removeProperty("display");
+    navLinks.style.removeProperty("flex-direction");
+    navLinks.style.removeProperty("align-items");
+    menuBtn.setAttribute("aria-expanded","false");
+  }
+}
+resetNavigationForViewport();
+window.addEventListener("resize",resetNavigationForViewport);
 
 /* Initial load */
 loadJobs();
