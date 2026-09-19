@@ -16,14 +16,14 @@
   --white:#fff;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f8faf9;color:var(--text)}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f8faf9;color:var(--text)}\nbody.modal-open{overflow:hidden}
 a{text-decoration:none}
 button,input,select,textarea{font:inherit}
 .container{max-width:1180px;margin:auto}
 .topbar{background:var(--dark);color:#dff3e7;font-size:12px}
 .topbar .container{display:flex;justify-content:space-between;gap:20px;padding:8px 22px}
 .topbar span{margin-right:18px}
-.navbar{background:#fff;border-bottom:1px solid var(--line)}
+.navbar{background:#fff;border-bottom:1px solid var(--line);position:relative;z-index:1001}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px}
 .brand{display:flex;align-items:center;gap:10px}
 .brand-mark{width:40px;height:40px;border-radius:10px;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:900}
@@ -110,7 +110,24 @@ button,input,select,textarea{font:inherit}
 .optional{font-weight:500;color:var(--muted)}
 
 @media(max-width:900px){
- .nav-links{display:none}.menu{display:block}
+ .nav-links{display:none}
+ .nav-links.mobile-open{
+   display:flex;
+   flex-direction:column;
+   align-items:flex-start;
+   position:absolute;
+   top:100%;
+   left:0;
+   right:0;
+   z-index:1000;
+   background:#fff;
+   border-top:1px solid var(--line);
+   border-bottom:1px solid var(--line);
+   box-shadow:0 8px 18px #00000012;
+   padding:14px 22px 18px;
+ }
+ .nav-links.mobile-open a{width:100%;padding:9px 0}
+ .menu{display:block}
  .tools,.jobs{grid-template-columns:1fr}
  .actions{grid-template-columns:1fr}
  .profile-cta{display:block}
@@ -853,19 +870,37 @@ $("registerForm").onsubmit = async function(event){
   submit.textContent = "Register My Profile";
 };
 
-/* Mobile menu */
-$("menuBtn").addEventListener("click",function(){
-  const links = $("navLinks");
-  const open = links.style.display === "flex";
+/* Responsive mobile menu
+   Uses a CSS class instead of inline styles, so the mobile menu
+   cannot remain stuck open when the browser is resized to desktop. */
+const menuBtn = $("menuBtn");
+const navLinks = $("navLinks");
 
-  links.style.display = open ? "" : "flex";
-  links.style.flexDirection = "column";
-  links.style.alignItems = "flex-start";
+function closeMobileMenu(){
+  navLinks.classList.remove("mobile-open");
+  menuBtn.setAttribute("aria-expanded","false");
+}
 
-  this.setAttribute(
-    "aria-expanded",
-    String(!open)
-  );
+menuBtn.addEventListener("click",function(){
+  if(window.innerWidth > 900){
+    closeMobileMenu();
+    return;
+  }
+
+  const open = navLinks.classList.toggle("mobile-open");
+  menuBtn.setAttribute("aria-expanded",String(open));
+});
+
+window.addEventListener("resize",function(){
+  if(window.innerWidth > 900){
+    closeMobileMenu();
+  }
+});
+
+navLinks.addEventListener("click",function(event){
+  if(event.target.closest("a") && window.innerWidth <= 900){
+    closeMobileMenu();
+  }
 });
 
 /* =====================================================
@@ -876,6 +911,7 @@ let modalHistoryOpen = false;
 
 function showModalWithHistory(id){
   $(id).classList.add("show");
+  document.body.classList.add("modal-open");
 
   if(!modalHistoryOpen){
     history.pushState({hdFacilitiesModal:true}, "");
@@ -885,6 +921,13 @@ function showModalWithHistory(id){
 
 function hideModal(id, updateHistory = true){
   $(id).classList.remove("show");
+
+  if(
+    !$("modal").classList.contains("show") &&
+    !$("registerModal").classList.contains("show")
+  ){
+    document.body.classList.remove("modal-open");
+  }
 
   if(
     updateHistory &&
@@ -917,6 +960,7 @@ window.addEventListener("popstate", function(){
     modalHistoryOpen = false;
     $("modal").classList.remove("show");
     $("registerModal").classList.remove("show");
+    document.body.classList.remove("modal-open");
   }
 });
 
